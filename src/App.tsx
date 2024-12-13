@@ -1,6 +1,7 @@
-import { useState } from 'react'
+import { PageHeader } from "./layouts/PageHeader";
 
-function App() {
+export default function App() {
+return <div className="max-h-screen flex flex-col">
+  <PageHeader/> 
+</div>
 }
-
-export default App
