@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { CategoryPills } from "./components/CategoryPills";
-import { categories } from "./data/home";
+import { categories, videos } from "./data/home";
 import { PageHeader } from "./layouts/PageHeader";
 import { VideoGridItem } from "./components/VideoGridItem";
 
@@ -15,8 +15,10 @@ return <div className="max-h-screen flex flex-col">
       <div className="sticky top-0 z-10 bg-white pb-2">
         <CategoryPills categories={categories} selectedCategory={selectedCategory} onSelect={setSelectedCategory}/>
       </div>
-      <div className="grid gap-4 grid-cols-[repeat(auto-fill, minmax(300px,1fr))]">
-        <VideoGridItem/>
+      <div className="grid gap-4 grid-cols-[repeat(auto-fill,minmax(300px,1fr))]">
+        {videos.map(video => (
+          <VideoGridItem key={video.id} {...video}/>
+        ))}
       </div>
     </div>
   </div>
