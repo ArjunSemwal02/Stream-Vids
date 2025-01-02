@@ -21,7 +21,7 @@ export function Sidebar() {
             </LargeSidebarSection>
             <hr />
             <LargeSidebarSection visibleItemCount={5}>
-                <LargeSidebarItem isActive Icon={Library} title="Library" url="/library" />
+                <LargeSidebarItem Icon={Library} title="Library" url="/library" />
                 <LargeSidebarItem Icon={History} title="History" url="/history" />
                 <LargeSidebarItem Icon={PlaySquare} title="PlaySquare" url="/playsquare" />
                 <LargeSidebarItem Icon={Clock} title="Clock" url="/clock" />
