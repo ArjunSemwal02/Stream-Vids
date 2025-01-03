@@ -1,4 +1,4 @@
-import { ChevronDown, ChevronUp, Clapperboard, Clock, Home, Library, History, PlaySquare, Repeat, ListVideo } from "lucide-react";
+import { ChevronDown, ChevronUp, Clapperboard, Clock, Home, Library, History, PlaySquare, Repeat, ListVideo, Icon, Flag, Flame, ShoppingBag, ShoppingBagIcon, Music, Music2, Film, Radio, Newspaper, Trophy, GamepadIcon, Lightbulb, Shirt, Podcast, CreativeCommons } from "lucide-react";
 import { Button, buttonStyles } from "../components/Button";
 import { Children, ElementType, ReactNode, useState } from "react";
 import { twMerge } from "tailwind-merge";
@@ -31,10 +31,25 @@ export function Sidebar() {
                 ))}
             </LargeSidebarSection>
             <hr />
-            <LargeSidebarSection visibleItemCount={6}>
+            <LargeSidebarSection title="Subscriptions" visibleItemCount={6}>
                 {subscriptions.map(subs => (
-                    <LargeSidebarItem key={subs.id} IconOrImgUrl={`${subs.imgUrl}`} title={subs.channelName} url={``}/>
+                    <LargeSidebarItem key={subs.id} IconOrImgUrl={subs.imgUrl} title={subs.channelName} url={`/@${subs.id}`}/>
                 ))}
+            </LargeSidebarSection>
+            <hr />
+            <LargeSidebarSection title="Explore" visibleItemCount={8}>
+                <LargeSidebarItem IconOrImgUrl={Flame} title="Trending" url="/trending" />
+                <LargeSidebarItem IconOrImgUrl={ShoppingBag} title="Shorts" url="/shorts" />
+                <LargeSidebarItem IconOrImgUrl={Music2} title="Music" url="/music" />
+                <LargeSidebarItem IconOrImgUrl={Film} title="Filmmaking" url="/filmmaking" />
+                <LargeSidebarItem IconOrImgUrl={Radio} title="Live" url="/live" />
+                <LargeSidebarItem IconOrImgUrl={GamepadIcon} title="Gaming" url="/gaming" />
+                <LargeSidebarItem IconOrImgUrl={Newspaper} title="News" url="/news" />
+                <LargeSidebarItem IconOrImgUrl={Trophy} title="Sports" url="/sports" />
+                <LargeSidebarItem IconOrImgUrl={Lightbulb} title="Learn" url="/learning" />
+                <LargeSidebarItem IconOrImgUrl={Shirt} title="Beauty & Fashion" url="/beauty&fashion" />
+                <LargeSidebarItem IconOrImgUrl={Podcast} title="Podcast" url="/podcast" />
+                <LargeSidebarItem IconOrImgUrl={CreativeCommons} title="Royalty Free" url="/royaltyfree" />
             </LargeSidebarSection>
         </aside>
     </>
@@ -57,7 +72,9 @@ function SmallSidebarItem({IconOrImgUrl, title, url}: SidebarItemProps) {
 
 function LargeSidebarItem({IconOrImgUrl, title, url, isActive=false}: SidebarItemProps) {
     return <a href={url} className={twMerge(buttonStyles({variant: "ghost"}), `w-full flex items-center rounded-lf gap-3 p-3 ${isActive ? "font-bold bg-gray-100 hover:bg-secondary" : undefined }`)}>
-        <IconOrImgUrl className="w-6 h-6"/>
+        {typeof IconOrImgUrl === "string" ? ( <img src={IconOrImgUrl} alt="" className="w-6 h-6 rounded-full"/>) 
+            : ( <IconOrImgUrl className="w-6 h-6"/>)
+        }
         <div className="whitespace-nowrap overflow-hidden text-ellipsis">{title}</div>
     </a>
 }
